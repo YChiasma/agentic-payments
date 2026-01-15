@@ -21,7 +21,13 @@ jobs:
 
       - name: Sync subfolder
         run: |
-          rsync -a --delete source/agentic-payments/ .
+          if [ ! -d "source/agentic-payments" ]; then
+            echo "ERROR: source/agentic-payments does not exist"
+            exit 1
+          fi
+      
+          rsync -av --delete source/agentic-payments/ .
+
 
       - name: Commit and push changes
         run: |
