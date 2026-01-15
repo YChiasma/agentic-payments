@@ -22,6 +22,8 @@ jobs:
       - name: Sync subfolder
         run: |
           cd source
+          pwd
+          ls
           rsync -a --delete agentic-payments/ .
 
       - name: Commit and push changes
